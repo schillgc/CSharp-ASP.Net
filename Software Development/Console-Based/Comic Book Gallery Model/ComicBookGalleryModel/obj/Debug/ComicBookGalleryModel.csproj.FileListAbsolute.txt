@@ -1,0 +1,20 @@
+C:\Users\schil\Documents\GitHub\Code-Louisville\Treehouse\C#\Software Development\Console-Based\Comic Book Gallery Model\ComicBookGalleryModel\bin\Debug\ComicBookGalleryModel.exe.config
+C:\Users\schil\Documents\GitHub\Code-Louisville\Treehouse\C#\Software Development\Console-Based\Comic Book Gallery Model\ComicBookGalleryModel\bin\Debug\ComicBookGalleryModel.exe
+C:\Users\schil\Documents\GitHub\Code-Louisville\Treehouse\C#\Software Development\Console-Based\Comic Book Gallery Model\ComicBookGalleryModel\bin\Debug\ComicBookGalleryModel.pdb
+C:\Users\schil\Documents\GitHub\Code-Louisville\Treehouse\C#\Software Development\Console-Based\Comic Book Gallery Model\ComicBookGalleryModel\bin\Debug\EntityFramework.dll
+C:\Users\schil\Documents\GitHub\Code-Louisville\Treehouse\C#\Software Development\Console-Based\Comic Book Gallery Model\ComicBookGalleryModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\schil\Documents\GitHub\Code-Louisville\Treehouse\C#\Software Development\Console-Based\Comic Book Gallery Model\ComicBookGalleryModel\bin\Debug\EntityFramework.xml
+C:\Users\schil\Documents\GitHub\Code-Louisville\Treehouse\C#\Software Development\Console-Based\Comic Book Gallery Model\ComicBookGalleryModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\schil\Documents\GitHub\Code-Louisville\Treehouse\C#\Software Development\Console-Based\Comic Book Gallery Model\ComicBookGalleryModel\obj\Debug\ComicBookGalleryModel.csprojResolveAssemblyReference.cache
+C:\Users\schil\Documents\GitHub\Code-Louisville\Treehouse\C#\Software Development\Console-Based\Comic Book Gallery Model\ComicBookGalleryModel\obj\Debug\ComicBookGalleryModel.exe
+C:\Users\schil\Documents\GitHub\Code-Louisville\Treehouse\C#\Software Development\Console-Based\Comic Book Gallery Model\ComicBookGalleryModel\obj\Debug\ComicBookGalleryModel.pdb
+C:\Users\schil\Documents\GitHub\Code-Louisville\Treehouse\Languages\C# - ASP.net\Software Development\Console-Based\Comic Book Gallery Model\ComicBookGalleryModel\bin\Debug\ComicBookGalleryModel.exe.config
+C:\Users\schil\Documents\GitHub\Code-Louisville\Treehouse\Languages\C# - ASP.net\Software Development\Console-Based\Comic Book Gallery Model\ComicBookGalleryModel\bin\Debug\ComicBookGalleryModel.exe
+C:\Users\schil\Documents\GitHub\Code-Louisville\Treehouse\Languages\C# - ASP.net\Software Development\Console-Based\Comic Book Gallery Model\ComicBookGalleryModel\bin\Debug\ComicBookGalleryModel.pdb
+C:\Users\schil\Documents\GitHub\Code-Louisville\Treehouse\Languages\C# - ASP.net\Software Development\Console-Based\Comic Book Gallery Model\ComicBookGalleryModel\bin\Debug\EntityFramework.dll
+C:\Users\schil\Documents\GitHub\Code-Louisville\Treehouse\Languages\C# - ASP.net\Software Development\Console-Based\Comic Book Gallery Model\ComicBookGalleryModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\schil\Documents\GitHub\Code-Louisville\Treehouse\Languages\C# - ASP.net\Software Development\Console-Based\Comic Book Gallery Model\ComicBookGalleryModel\bin\Debug\EntityFramework.xml
+C:\Users\schil\Documents\GitHub\Code-Louisville\Treehouse\Languages\C# - ASP.net\Software Development\Console-Based\Comic Book Gallery Model\ComicBookGalleryModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\schil\Documents\GitHub\Code-Louisville\Treehouse\Languages\C# - ASP.net\Software Development\Console-Based\Comic Book Gallery Model\ComicBookGalleryModel\obj\Debug\ComicBookGalleryModel.csprojResolveAssemblyReference.cache
+C:\Users\schil\Documents\GitHub\Code-Louisville\Treehouse\Languages\C# - ASP.net\Software Development\Console-Based\Comic Book Gallery Model\ComicBookGalleryModel\obj\Debug\ComicBookGalleryModel.exe
+C:\Users\schil\Documents\GitHub\Code-Louisville\Treehouse\Languages\C# - ASP.net\Software Development\Console-Based\Comic Book Gallery Model\ComicBookGalleryModel\obj\Debug\ComicBookGalleryModel.pdb
