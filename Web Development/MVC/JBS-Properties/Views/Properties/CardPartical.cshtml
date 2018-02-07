@@ -1,0 +1,11 @@
+﻿@model JBS_Properties.Models.Property
+@model JBS_Properties.Models.GoogleMaps
+
+<div class="card">
+    <img class="card-img-top" data-src="holder.js/100%x160/" alt=@Model.OfficialAddress>
+    <div class="card-block">
+        <h4 class="card-title">@Model.RentStatus</h4>
+            <p class="card-text"><img src=@Model.GoogleMapsURL></p>
+            <a href="http://www.zillow.com/webservice/GetZestimate.htm?zws-id=X1-ZWz1fsyqikrsi3_6sext&zpid=95196527&rentzestimate=true">Zillow Zestimate</a>
+    </div>
+</div>

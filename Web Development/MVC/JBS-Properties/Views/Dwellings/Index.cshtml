@@ -1,0 +1,63 @@
+﻿@model IEnumerable<John_Baxter_Schilling.Data.Dwelling>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OfficialAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LeaseRenewalDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NamesOnLease)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumberForTennet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrimaryTennetEmailAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrentMonthlyRentAmountSignedForThisDwelling)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OfficialAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaseRenewalDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NamesOnLease)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumberForTennet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrimaryTennetEmailAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentMonthlyRentAmountSignedForThisDwelling)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>

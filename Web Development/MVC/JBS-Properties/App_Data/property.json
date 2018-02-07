@@ -1,0 +1,76 @@
+{
+  "rental": [
+    {
+      "address": "3722 Vermont Ave, Louisville, KY 40211, USA",
+      "status": "Rented",
+      "image": "https://maps.googleapis.com/maps/api/streetview?size=400x400&location=38.2560397, -85.8136963&key=AIzaSyDdNpQIIQNziuF5szq1DfRNKAUdNY3yNp4",
+      "zestimate": "http://www.zillow.com/webservice/GetZestimate.htm?zws-id=X1-ZWz1fsyqikrsi3_6sext&zpid=95196527&rentzestimate=true"
+    },
+    {
+      "address": "223 S 43rd St, Louisville, KY 40212, USA",
+      "status": "Rented",
+      "image": "https://maps.googleapis.com/maps/api/streetview?size=400x400&location=38.2625516, -85.8199476&key=AIzaSyDdNpQIIQNziuF5szq1DfRNKAUdNY3yNp4",
+      "zestimate": "http://www.zillow.com/webservice/GetZestimate.htm?zws-id=X1-ZWz1fsyqikrsi3_6sext&zpid=73459007&rentzestimate=true"
+    },
+    {
+      "address": "220 S 42nd St., Louisville, KY 40212, USA",
+      "status": "Rented",
+      "image": "https://maps.googleapis.com/maps/api/streetview?size=400x400&location=38.262405, -85.8194649&key=AIzaSyDdNpQIIQNziuF5szq1DfRNKAUdNY3yNp4"
+    },
+    {
+      "address": "122 S 42nd St., Louisville, KY 40212, USA",
+      "status": "Rented",
+      "image": "https://maps.googleapis.com/maps/api/streetview?size=400x400&location=38.264141, -85.818324&key=AIzaSyDdNpQIIQNziuF5szq1DfRNKAUdNY3yNp4"
+    },
+    {
+      "address": "833 S 38th St., Louisville, KY 40212, USA",
+      "status": "Rented",
+      "image": "https://maps.googleapis.com/maps/api/streetview?size=400x400&location=38.246626, -85.814959&key=AIzaSyDdNpQIIQNziuF5szq1DfRNKAUdNY3yNp4"
+    },
+    {
+      "address": "1114 Cecil Ave., Louisville, KY 40212, USA",
+      "status": "Rented",
+      "image": "https://maps.googleapis.com/maps/api/streetview?size=400x400&location=38.241621, -85.821866&key=AIzaSyDdNpQIIQNziuF5szq1DfRNKAUdNY3yNp4"
+    },
+    {
+      "address": "2612 W Kentucky St., Louisville, KY 40211, USA",
+      "status": "Rented",
+      "image": "https://maps.googleapis.com/maps/api/streetview?size=400x400&location=38.243123, -85.796284&key=AIzaSyDdNpQIIQNziuF5szq1DfRNKAUdNY3yNp4"
+    },
+    {
+      "address": "2610 W Kentucky St., Louisville, KY 40211, USA",
+      "status": "Rented",
+      "image": "https://maps.googleapis.com/maps/api/streetview?size=400x400&location=38.242939, -85.796215&key=AIzaSyDdNpQIIQNziuF5szq1DfRNKAUdNY3yNp4"
+    },
+    {
+      "address": "3026 Grand Ave., Louisville, KY 40212, USA",
+      "status": "Rented",
+      "image": "https://maps.googleapis.com/maps/api/streetview?size=400x400&location=38.241048, -85.804615&key=AIzaSyDdNpQIIQNziuF5szq1DfRNKAUdNY3yNp4"
+    },
+    {
+      "address": "1700 Harold Ave., Louisville, KY 40212, USA",
+      "status": "Rented",
+      "image": "https://maps.googleapis.com/maps/api/streetview?size=400x400&location=38.217954, -85.791424&key=AIzaSyDdNpQIIQNziuF5szq1DfRNKAUdNY3yNp4"
+    },
+    {
+      "address": "2723 Hale Ave., Louisville, KY 40211, USA",
+      "status": "Rented",
+      "image": "https://maps.googleapis.com/maps/api/streetview?size=400x400&location=38.239589, -85.798723&key=AIzaSyDdNpQIIQNziuF5szq1DfRNKAUdNY3yNp4",
+      "zestimate": "http://www.zillow.com/webservice/GetZestimate.htm?zws-id=X1-ZWz1fsyqikrsi3_6sext&zpid=73664496&rentzestimate=true"
+    },
+    {
+      "address": "2721 Hale Ave., Louisville, KY 40211, USA",
+      "status": "Rented",
+      "image": "https://maps.googleapis.com/maps/api/streetview?size=400x400&location=38.239682, -85.79881&key=AIzaSyDdNpQIIQNziuF5szq1DfRNKAUdNY3yNp4",
+      "zestimate": "http://www.zillow.com/webservice/GetZestimate.htm?zws-id=X1-ZWz1fsyqikrsi3_6sext&zpid=73595813&rentzestimate=true"
+    },
+    {
+      "address": "2127 Greenwood Ave., Louisville, KY 40210, USA",
+      "status": "Rented",
+      "purchase-price": "$9,625",
+      "purchase-date": "2016-05-03T05:00:00.000Z",
+      "image": "https://maps.googleapis.com/maps/api/streetview?size=400x400&location=38.241369, -85.789404&key=AIzaSyDdNpQIIQNziuF5szq1DfRNKAUdNY3yNp4",
+      "zestimate": "http://www.zillow.com/webservice/GetZestimate.htm?zws-id=X1-ZWz1fsyqikrsi3_6sext&zpid=73665430&rentzestimate=true"
+    }
+  ]
+}

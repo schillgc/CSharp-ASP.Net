@@ -1,0 +1,71 @@
+﻿@model John_Baxter_Schilling.Data.Dwelling
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>@Html.DisplayFor(model => model.OfficialAddress)</h4>
+    <hr />
+    <dl class="dl-horizontal col-xs-12 col-md-4">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PropertyPurchaseAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PropertyPurchaseAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PurchaseDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PurchaseDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NamesOnLease)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamesOnLease)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumberForTennet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumberForTennet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrimaryTennetEmailAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrimaryTennetEmailAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeaseRenewalDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeaseRenewalDate)
+        </dd>
+    </dl>
+    <section class="col-md-4">
+        <img src='@string.Format("https://maps.googleapis.com/maps/api/streetview?size=400x400&location={0}&key=AIzaSyDdNpQIIQNziuF5szq1DfRNKAUdNY3yNp4", Uri.EscapeUriString(Model.OfficialAddress))'>
+    </section>
+</div>
+
+<p class="col-md-1">
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
