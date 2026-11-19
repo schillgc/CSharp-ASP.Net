@@ -1,4 +1,5 @@
 using TreehouseDefense;
+using Path = TreehouseDefense.Path;
 
 var tests = new (string Name, Action Run)[]
 {
