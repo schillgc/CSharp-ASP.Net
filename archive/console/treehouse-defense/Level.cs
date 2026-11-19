@@ -31,6 +31,13 @@ public sealed class Level
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(maximumTurns);
         TurnsPlayed = 0;
 
+        // A previously scored invader is already a loss; do not mistake an
+        // inactive, scored collection for a completed/won level.
+        if (_invaders.Any(invader => invader.HasScored))
+        {
+            return false;
+        }
+
         while (_invaders.Any(invader => invader.IsActive))
         {
             if (TurnsPlayed >= maximumTurns)
