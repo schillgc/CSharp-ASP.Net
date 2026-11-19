@@ -141,8 +141,14 @@ static void LevelDetectsNeutralizedInvaders()
 static void ResurrectingInvaderRejectsInvalidDamage()
 {
     var invader = new ResurrectingInvader(BuildPath(3));
+
+    // The first form has 2 health; after it is neutralized, the stronger
+    // second form begins with 4 health and must be defeated separately.
     invader.DecreaseHealth(2);
-    invader.DecreaseHealth(2);
+    AssertFalse(invader.IsNeutralized);
+    AssertEqual(4, invader.Health);
+
+    invader.DecreaseHealth(4);
     AssertTrue(invader.IsNeutralized);
     AssertThrows<ArgumentOutOfRangeException>(() => invader.DecreaseHealth(0));
 }
