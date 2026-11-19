@@ -1,0 +1,162 @@
+using TreehouseDefense;
+
+var tests = new (string Name, Action Run)[]
+{
+    ("Map rejects non-positive dimensions", MapRejectsInvalidDimensions),
+    ("Map locations reject out-of-bounds coordinates", MapLocationRejectsOutOfBounds),
+    ("Path rejects empty and mixed-map locations", PathRejectsInvalidLocations),
+    ("Fast invader advances two path steps", FastInvaderMovesTwoSteps),
+    ("Sniper tower deals guaranteed damage in range", SniperTowerHitsInRange),
+    ("Level loses when an invader reaches the path end", LevelDetectsScoringInvader),
+    ("Level wins when all invaders are neutralized", LevelDetectsNeutralizedInvaders),
+    ("Seeded simulations are reproducible", SeededSimulationIsReproducible)
+};
+
+var failures = new List<string>();
+foreach (var (name, run) in tests)
+{
+    try
+    {
+        run();
+        Console.WriteLine($"PASS {name}");
+    }
+    catch (Exception exception)
+    {
+        failures.Add($"{name}: {exception.Message}");
+        Console.WriteLine($"FAIL {name}: {exception.Message}");
+    }
+}
+
+Console.WriteLine($"{tests.Length - failures.Count}/{tests.Length} contract tests passed.");
+return failures.Count == 0 ? 0 : 1;
+
+static void MapRejectsInvalidDimensions()
+{
+    AssertThrows<ArgumentOutOfRangeException>(() => new Map(0, 4));
+    AssertThrows<ArgumentOutOfRangeException>(() => new Map(4, -1));
+}
+
+static void MapLocationRejectsOutOfBounds()
+{
+    var map = new Map(3, 3);
+    AssertThrows<OutOfBoundsException>(() => new MapLocation(3, 1, map));
+    AssertThrows<OutOfBoundsException>(() => new MapLocation(-1, 0, map));
+}
+
+static void PathRejectsInvalidLocations()
+{
+    AssertThrows<ArgumentException>(() => new Path(Array.Empty<MapLocation>()));
+
+    var firstMap = new Map(3, 3);
+    var secondMap = new Map(3, 3);
+    AssertThrows<ArgumentException>(() => new Path(
+    [
+        new MapLocation(0, 0, firstMap),
+        new MapLocation(1, 0, secondMap)
+    ]));
+}
+
+static void FastInvaderMovesTwoSteps()
+{
+    var path = BuildPath(5);
+    var invader = new FastInvader(path);
+    invader.Move();
+    AssertEqual(new MapLocation(2, 0, path.Map), invader.Location);
+}
+
+static void SniperTowerHitsInRange()
+{
+    var map = new Map(4, 2);
+    var location = new MapLocation(0, 0, map);
+    var path = new Path([new MapLocation(1, 0, map), new MapLocation(2, 0, map)]);
+    var invader = new BasicInvader(path);
+    var tower = StandardTowers.Sniper(location, new GameRandom(7));
+
+    AssertTrue(tower.FireOnInvaders([invader]));
+    AssertEqual(1, invader.Health);
+    AssertTrue(tower.FireOnInvaders([invader]));
+    AssertTrue(invader.IsNeutralized);
+}
+
+static void LevelDetectsScoringInvader()
+{
+    var path = BuildPath(2);
+    var level = new Level([new BasicInvader(path)], Array.Empty<Tower>());
+    AssertFalse(level.Play());
+    AssertEqual(2, level.TurnsPlayed);
+}
+
+static void LevelDetectsNeutralizedInvaders()
+{
+    var map = new Map(3, 1);
+    var path = new Path([new MapLocation(0, 0, map), new MapLocation(1, 0, map)]);
+    var invader = new BasicInvader(path);
+    var tower = StandardTowers.Sniper(new MapLocation(0, 0, map), new GameRandom(9));
+    var level = new Level([invader], [tower]);
+
+    AssertTrue(level.Play());
+    AssertTrue(invader.IsNeutralized);
+}
+
+static void SeededSimulationIsReproducible()
+{
+    static (bool Won, int Turns) Run(int seed)
+    {
+        var random = new GameRandom(seed);
+        var map = new Map(5, 2);
+        var path = new Path(Enumerable.Range(0, 5).Select(x => new MapLocation(x, 0, map)));
+        var invaders = new IInvader[]
+        {
+            new ShieldedInvader(path, random),
+            new BasicInvader(path),
+            new FastInvader(path)
+        };
+        var towers = new[]
+        {
+            StandardTowers.Sniper(new MapLocation(1, 1, map), random),
+            StandardTowers.Powerful(new MapLocation(3, 1, map), random)
+        };
+        var level = new Level(invaders, towers);
+        return (level.Play(), level.TurnsPlayed);
+    }
+
+    AssertEqual(Run(1234), Run(1234));
+}
+
+static Path BuildPath(int length)
+{
+    var map = new Map(length, 1);
+    return new Path(Enumerable.Range(0, length).Select(x => new MapLocation(x, 0, map)));
+}
+
+static void AssertTrue(bool value)
+{
+    if (!value) throw new InvalidOperationException("Expected true.");
+}
+
+static void AssertFalse(bool value)
+{
+    if (value) throw new InvalidOperationException("Expected false.");
+}
+
+static void AssertEqual<T>(T expected, T actual)
+{
+    if (!EqualityComparer<T>.Default.Equals(expected, actual))
+    {
+        throw new InvalidOperationException($"Expected '{expected}', received '{actual}'.");
+    }
+}
+
+static void AssertThrows<TException>(Action action) where TException : Exception
+{
+    try
+    {
+        action();
+    }
+    catch (TException)
+    {
+        return;
+    }
+
+    throw new InvalidOperationException($"Expected {typeof(TException).Name}.");
+}
