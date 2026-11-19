@@ -4,7 +4,7 @@ This repository was originally a multi-project collection of C# console applicat
 
 ## Current default-branch status
 
-The current `master` branch does **not** contain the original application source tree. Its current tree contains repository metadata and the CodeQL workflow only. The source snapshot remains reachable in Git history at commit [`da03ed59172336292021fe6cddd07f8007500267`](https://github.com/schillgc/CSharp-ASP.Net/tree/da03ed59172336292021fe6cddd07f8007500267).
+The current `master` branch does **not** contain the original application source tree wholesale. It retains individually reviewed, source-only recoveries under `archive/console/`, each with its own build/test workflow. The remaining historical source snapshot is reachable in Git history at commit [`da03ed59172336292021fe6cddd07f8007500267`](https://github.com/schillgc/CSharp-ASP.Net/tree/da03ed59172336292021fe6cddd07f8007500267).
 
 That historical snapshot contains 494 tree entries. It includes application source, Visual Studio metadata, compiled binaries, intermediate build output, and vendored package files. Do not restore the snapshot wholesale: that would reintroduce generated artifacts and old dependencies without review.
 
