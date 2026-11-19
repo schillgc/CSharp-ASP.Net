@@ -117,6 +117,7 @@ public sealed class ResurrectingInvader : IInvader
 
     public void DecreaseHealth(int amount)
     {
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(amount);
         if (IsActive)
         {
             Current.DecreaseHealth(amount);
