@@ -17,7 +17,13 @@ public sealed class Path
             throw new ArgumentException("A path must contain at least one location.", nameof(locations));
         }
 
-        if (_locations.Any(location => !ReferenceEquals(location.Map, _locations[0].Map)))
+        if (_locations.Any(location => location is null))
+        {
+            throw new ArgumentException("A path cannot contain null locations.", nameof(locations));
+        }
+
+        var map = _locations[0].Map;
+        if (_locations.Any(location => !ReferenceEquals(location.Map, map)))
         {
             throw new ArgumentException("Every path location must belong to the same map.", nameof(locations));
         }
