@@ -33,6 +33,28 @@ Some related projects now have separate repositories:
 
 Those repositories have their own maintenance and deployment boundaries. This archive should not become a second, conflicting source of truth for their active versions.
 
+## Restored project
+
+### Morse Code Translator
+
+A source-only recovery of the historical console translator is available at [`archive/console/morse-translator/`](archive/console/morse-translator/). It has been modernized as a standalone .NET 10 LTS application with bidirectional encoding/decoding, explicit validation, a dependency-free contract test harness, and a scoped GitHub Actions workflow.
+
+Build and run the application from its directory:
+
+```bash
+dotnet build --configuration Release
+dotnet run
+dotnet run -- decode
+```
+
+Run its contract tests:
+
+```bash
+dotnet run --project tests/MorseTranslator.ContractTests/MorseTranslator.ContractTests.csproj --configuration Release
+```
+
+The recovery intentionally excludes the historical compiled executable and editor/build artifacts. Other historical projects remain under review and have not been wholesale restored.
+
 ## Safe recovery and modernization policy
 
 If historical source is restored to this repository, do it as a reviewed, source-only recovery:
