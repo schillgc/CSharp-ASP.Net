@@ -28,4 +28,4 @@ jobs:
       - name: Build application
         run: dotnet build archive/console/morse-translator/MorseTranslator.csproj --configuration Release
       - name: Run contract tests
-        run: dotnet run --project archive/console/morse-translator/tests/MorseTranslator.ContractTests.csproj --configuration Release
+        run: dotnet run --project archive/console/morse-translator/tests/MorseTranslator.ContractTests/MorseTranslator.ContractTests.csproj --configuration Release
