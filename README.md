@@ -53,7 +53,27 @@ Run its contract tests:
 dotnet run --project tests/MorseTranslator.ContractTests/MorseTranslator.ContractTests.csproj --configuration Release
 ```
 
-The recovery intentionally excludes the historical compiled executable and editor/build artifacts. Other historical projects remain under review and have not been wholesale restored.
+The recovery intentionally excludes the historical compiled executable and editor/build artifacts.
+
+### Treehouse Defense
+
+A source-only recovery of the historical tower-defense simulation is available at [`archive/console/treehouse-defense/`](archive/console/treehouse-defense/). It is a standalone .NET 10 console application with map/path validation, five invader types, configurable towers, seeded randomness, a turn limit, and a dependency-free contract test harness.
+
+Build and run it:
+
+```bash
+dotnet build archive/console/treehouse-defense/TreehouseDefense.csproj --configuration Release
+dotnet run --project archive/console/treehouse-defense/TreehouseDefense.csproj
+dotnet run --project archive/console/treehouse-defense/TreehouseDefense.csproj -- --seed 123
+```
+
+Run its contract tests:
+
+```bash
+dotnet run --project archive/console/treehouse-defense/tests/TreehouseDefense.ContractTests/TreehouseDefense.ContractTests.csproj --configuration Release
+```
+
+The original executable, generated IDE/build artifacts, and vendored packages were not restored. Other historical projects remain under review and have not been wholesale restored.
 
 ## Safe recovery and modernization policy
 
