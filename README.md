@@ -73,6 +73,22 @@ Run its contract tests:
 dotnet run --project archive/console/treehouse-defense/tests/TreehouseDefense.ContractTests/TreehouseDefense.ContractTests.csproj --configuration Release
 ```
 
+### Fitness Frog
+
+A source-only recovery of the historical Fitness Frog exercise tracker is available at [`archive/console/fitness-frog/`](archive/console/fitness-frog/). It is a standalone .NET 10 console application with invariant-culture decimal parsing, finite/positive duration validation, checked running totals, and a dependency-free contract test harness. It stores totals only in memory for the current session.
+
+Run it:
+
+```bash
+dotnet run --project archive/console/fitness-frog/FitnessFrog.csproj
+```
+
+Run its contract tests:
+
+```bash
+dotnet run --project archive/console/fitness-frog/tests/FitnessFrog.ContractTests/FitnessFrog.ContractTests.csproj --configuration Release
+```
+
 The original executable, generated IDE/build artifacts, and vendored packages were not restored. Other historical projects remain under review and have not been wholesale restored.
 
 ## Safe recovery and modernization policy
