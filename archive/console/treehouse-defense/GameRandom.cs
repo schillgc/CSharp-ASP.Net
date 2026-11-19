@@ -14,8 +14,11 @@ public sealed class GameRandom
 
     public bool Chance(double probability)
     {
-        ArgumentOutOfRangeException.ThrowIfNegative(probability);
-        ArgumentOutOfRangeException.ThrowIfGreaterThan(probability, 1);
+        if (probability is < 0 or > 1)
+        {
+            throw new ArgumentOutOfRangeException(nameof(probability), "Probability must be between 0 and 1.");
+        }
+
         return NextDouble() < probability;
     }
 }
