@@ -91,6 +91,10 @@ dotnet run --project archive/console/fitness-frog/tests/FitnessFrog.ContractTest
 
 The original executable, generated IDE/build artifacts, and vendored packages were not restored. Other historical projects remain under review and have not been wholesale restored.
 
+### Deferred recovery: Soccer Stats
+
+The historical Soccer Stats source is intentionally not restored yet. Its old program embedded third-party news/sentiment service credentials in source control, and its expected `players.json` dataset is absent from the historical snapshot. The old CSV importer also needs input-validation and parsing work. See [the Soccer Stats recovery/security gate](https://github.com/schillgc/CSharp-ASP.Net/issues/13). Do not copy the historical program or configuration directly into an active project.
+
 ## Safe recovery and modernization policy
 
 If historical source is restored to this repository, do it as a reviewed, source-only recovery:
