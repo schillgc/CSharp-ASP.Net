@@ -4,7 +4,12 @@ internal static class Program
 {
     private static int Main(string[] args)
     {
-        var seed = ReadSeed(args);
+        if (!TryReadSeed(args, out var seed))
+        {
+            Console.Error.WriteLine("Usage: TreehouseDefense [--seed INTEGER]");
+            return 2;
+        }
+
         var random = new GameRandom(seed);
         var map = new Map(8, 5);
 
@@ -44,7 +49,7 @@ internal static class Program
             Console.WriteLine($"Seed: {seed}");
             Console.WriteLine($"Turns played: {level.TurnsPlayed}");
             Console.WriteLine(playerWon ? "Player won!" : "Player lost.");
-            return playerWon ? 0 : 1;
+            return 0;
         }
         catch (TreehouseDefenseException exception)
         {
@@ -53,20 +58,16 @@ internal static class Program
         }
     }
 
-    private static int ReadSeed(string[] args)
+    private static bool TryReadSeed(string[] args, out int seed)
     {
+        seed = 42;
         if (args.Length == 0)
         {
-            return 42;
+            return true;
         }
 
-        if (args.Length == 2 && args[0] == "--seed" && int.TryParse(args[1], out var seed))
-        {
-            return seed;
-        }
-
-        Console.Error.WriteLine("Usage: TreehouseDefense [--seed INTEGER]");
-        Environment.ExitCode = 2;
-        return 42;
+        return args.Length == 2
+            && args[0] == "--seed"
+            && int.TryParse(args[1], out seed);
     }
 }
