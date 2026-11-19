@@ -6,10 +6,15 @@ var tests = new (string Name, Action Run)[]
     ("Map rejects non-positive dimensions", MapRejectsInvalidDimensions),
     ("Map locations reject out-of-bounds coordinates", MapLocationRejectsOutOfBounds),
     ("Path rejects empty and mixed-map locations", PathRejectsInvalidLocations),
+    ("Path rejects null locations", PathRejectsNullLocations),
+    ("Map distance remains safe for large coordinates", LargeMapDistanceDoesNotOverflow),
     ("Fast invader advances two path steps", FastInvaderMovesTwoSteps),
     ("Sniper tower deals guaranteed damage in range", SniperTowerHitsInRange),
     ("Level loses when an invader reaches the path end", LevelDetectsScoringInvader),
+    ("Level loses when an invader has already scored", LevelDetectsPreviouslyScoredInvader),
+    ("Level enforces its maximum turn count", LevelEnforcesMaximumTurns),
     ("Level wins when all invaders are neutralized", LevelDetectsNeutralizedInvaders),
+    ("Resurrecting invaders reject invalid damage", ResurrectingInvaderRejectsInvalidDamage),
     ("Seeded simulations are reproducible", SeededSimulationIsReproducible)
 };
 
@@ -57,6 +62,20 @@ static void PathRejectsInvalidLocations()
     ]));
 }
 
+static void PathRejectsNullLocations()
+{
+    MapLocation[] invalidLocations = [null!];
+    AssertThrows<ArgumentException>(() => new Path(invalidLocations));
+}
+
+static void LargeMapDistanceDoesNotOverflow()
+{
+    var map = new Map(int.MaxValue, 1);
+    var left = new MapLocation(0, 0, map);
+    var right = new MapLocation(1_500_000_000, 0, map);
+    AssertEqual(1_500_000_000d, left.DistanceTo(right));
+}
+
 static void FastInvaderMovesTwoSteps()
 {
     var path = BuildPath(5);
@@ -87,6 +106,26 @@ static void LevelDetectsScoringInvader()
     AssertEqual(2, level.TurnsPlayed);
 }
 
+static void LevelDetectsPreviouslyScoredInvader()
+{
+    var path = BuildPath(2);
+    var invader = new FastInvader(path);
+    invader.Move();
+    AssertTrue(invader.HasScored);
+
+    var level = new Level([invader], Array.Empty<Tower>());
+    AssertFalse(level.Play());
+    AssertEqual(0, level.TurnsPlayed);
+}
+
+static void LevelEnforcesMaximumTurns()
+{
+    var path = BuildPath(4);
+    var level = new Level([new BasicInvader(path)], Array.Empty<Tower>());
+    AssertThrows<TimeoutException>(() => level.Play(maximumTurns: 1));
+    AssertEqual(1, level.TurnsPlayed);
+}
+
 static void LevelDetectsNeutralizedInvaders()
 {
     var map = new Map(3, 1);
@@ -97,6 +136,15 @@ static void LevelDetectsNeutralizedInvaders()
 
     AssertTrue(level.Play());
     AssertTrue(invader.IsNeutralized);
+}
+
+static void ResurrectingInvaderRejectsInvalidDamage()
+{
+    var invader = new ResurrectingInvader(BuildPath(3));
+    invader.DecreaseHealth(2);
+    invader.DecreaseHealth(2);
+    AssertTrue(invader.IsNeutralized);
+    AssertThrows<ArgumentOutOfRangeException>(() => invader.DecreaseHealth(0));
 }
 
 static void SeededSimulationIsReproducible()
