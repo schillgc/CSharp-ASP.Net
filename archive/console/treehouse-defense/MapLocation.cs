@@ -22,13 +22,13 @@ public sealed class MapLocation : IEquatable<MapLocation>
     public double DistanceTo(MapLocation other)
     {
         ArgumentNullException.ThrowIfNull(other);
-        var deltaX = X - other.X;
-        var deltaY = Y - other.Y;
+        var deltaX = (double)X - other.X;
+        var deltaY = (double)Y - other.Y;
         return Math.Sqrt((deltaX * deltaX) + (deltaY * deltaY));
     }
 
     public bool InRangeOf(MapLocation other, int range) =>
-        range >= 0 && DistanceTo(other) <= range;
+        range >= 0 && ReferenceEquals(Map, other.Map) && DistanceTo(other) <= range;
 
     public bool Equals(MapLocation? other) =>
         other is not null && X == other.X && Y == other.Y && ReferenceEquals(Map, other.Map);
