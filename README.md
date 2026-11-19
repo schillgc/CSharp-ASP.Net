@@ -115,3 +115,7 @@ If historical source is restored to this repository, do it as a reviewed, source
 ## Contribution guidance
 
 Prefer small, project-scoped changes with a documented purpose and reproducible validation. The historical projects are valuable learning and engineering artifacts; preservation and accurate provenance take priority over an unreviewed rewrite.
+
+## Security
+
+See [SECURITY.md](SECURITY.md) for this repository's security, privacy, and responsible-use guidance.
