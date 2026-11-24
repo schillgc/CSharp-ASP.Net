@@ -1,6 +1,7 @@
 name: Morse Translator CI
 
 on:
+  workflow_dispatch:
   push:
     branches: [master]
     paths:
