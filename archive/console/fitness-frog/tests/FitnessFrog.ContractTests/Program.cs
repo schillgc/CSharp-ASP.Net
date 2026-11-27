@@ -8,7 +8,8 @@ var tests = new (string Name, Action Run)[]
     ("Malformed and non-finite values are rejected", RejectsInvalidNumbers),
     ("Session tracks totals and entry counts", TracksSessionTotals),
     ("Feedback thresholds are stable", UsesFeedbackThresholds),
-    ("Session rejects overflow", RejectsTotalOverflow)
+    ("Session rejects overflow without changing totals", RejectsTotalOverflow),
+    ("Entry-count overflow leaves session state unchanged", RejectsEntryCountOverflow)
 };
 
 var failures = new List<string>();
@@ -81,7 +82,19 @@ static void RejectsTotalOverflow()
     var session = new FitnessSession();
     session.Add(double.MaxValue);
     AssertThrows<OverflowException>(() => session.Add(double.MaxValue));
+    AssertEqual(double.MaxValue, session.TotalMinutes);
     AssertEqual(1, session.EntryCount);
+}
+
+static void RejectsEntryCountOverflow()
+{
+    var session = new FitnessSession();
+    typeof(FitnessSession).GetProperty(nameof(FitnessSession.EntryCount))!
+        .SetValue(session, int.MaxValue);
+
+    AssertThrows<OverflowException>(() => session.Add(1));
+    AssertEqual(0d, session.TotalMinutes);
+    AssertEqual(int.MaxValue, session.EntryCount);
 }
 
 static void AssertEqual<T>(T expected, T actual)
