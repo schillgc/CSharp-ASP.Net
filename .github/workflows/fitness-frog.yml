@@ -34,5 +34,15 @@ jobs:
         run: dotnet build archive/console/fitness-frog/FitnessFrog.csproj --configuration Release
       - name: Run contract tests
         run: dotnet run --project archive/console/fitness-frog/tests/FitnessFrog.ContractTests/FitnessFrog.ContractTests.csproj --configuration Release
-      - name: Smoke-test console session
-        run: printf '12.5\nquit\n' | dotnet run --project archive/console/fitness-frog/FitnessFrog.csproj --configuration Release
+      - name: Smoke-test console session and overflow recovery
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          normal_output="$(printf '12.5\nquit\n' | dotnet run --project archive/console/fitness-frog/FitnessFrog.csproj --configuration Release)"
+          grep -F "12.5" <<< "$normal_output"
+          grep -F "Goodbye." <<< "$normal_output"
+
+          overflow_output="$(printf '1.7976931348623157E+308\n1.7976931348623157E+308\nquit\n' | dotnet run --project archive/console/fitness-frog/FitnessFrog.csproj --configuration Release)"
+          grep -F "Entry not recorded." <<< "$overflow_output"
+          grep -F "Goodbye." <<< "$overflow_output"

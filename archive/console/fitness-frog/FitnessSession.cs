@@ -12,6 +12,7 @@ public sealed class FitnessSession
             throw new ArgumentOutOfRangeException(nameof(minutes), "Exercise minutes must be finite and greater than zero.");
         }
 
+        var updatedEntryCount = checked(EntryCount + 1);
         var updatedTotal = TotalMinutes + minutes;
         if (!double.IsFinite(updatedTotal))
         {
@@ -19,7 +20,7 @@ public sealed class FitnessSession
         }
 
         TotalMinutes = updatedTotal;
-        EntryCount = checked(EntryCount + 1);
+        EntryCount = updatedEntryCount;
         return ActivityFeedback.For(minutes);
     }
 }

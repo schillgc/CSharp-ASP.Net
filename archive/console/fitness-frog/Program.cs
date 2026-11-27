@@ -25,7 +25,17 @@ internal static class Program
                 continue;
             }
 
-            var feedback = session.Add(result.Minutes);
+            string feedback;
+            try
+            {
+                feedback = session.Add(result.Minutes);
+            }
+            catch (OverflowException exception)
+            {
+                Console.WriteLine($"Entry not recorded. {exception.Message}");
+                continue;
+            }
+
             Console.WriteLine(feedback);
             Console.WriteLine(
                 $"Recorded {session.TotalMinutes.ToString("0.##", CultureInfo.InvariantCulture)} total minutes " +
