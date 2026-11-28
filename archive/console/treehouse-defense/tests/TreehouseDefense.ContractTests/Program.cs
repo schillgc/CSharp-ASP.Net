@@ -15,7 +15,8 @@ var tests = new (string Name, Action Run)[]
     ("Level enforces its maximum turn count", LevelEnforcesMaximumTurns),
     ("Level wins when all invaders are neutralized", LevelDetectsNeutralizedInvaders),
     ("Resurrecting invaders reject invalid damage", ResurrectingInvaderRejectsInvalidDamage),
-    ("Seeded simulations are reproducible", SeededSimulationIsReproducible)
+    ("Seeded simulations are reproducible", SeededSimulationIsReproducible),
+    ("Random probabilities and tower accuracy reject non-finite values", RejectsNonFiniteProbabilities)
 };
 
 var failures = new List<string>();
@@ -176,6 +177,20 @@ static void SeededSimulationIsReproducible()
     }
 
     AssertEqual(Run(1234), Run(1234));
+}
+
+static void RejectsNonFiniteProbabilities()
+{
+    var random = new GameRandom(42);
+    foreach (var probability in new[] { double.NaN, double.PositiveInfinity, double.NegativeInfinity })
+    {
+        AssertThrows<ArgumentOutOfRangeException>(() => random.Chance(probability));
+        AssertThrows<ArgumentOutOfRangeException>(() => new Tower(
+            new MapLocation(0, 0, new Map(1, 1)), random, accuracy: probability));
+    }
+
+    AssertFalse(random.Chance(0));
+    AssertTrue(random.Chance(1));
 }
 
 static Path BuildPath(int length)

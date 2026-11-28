@@ -15,7 +15,7 @@ public sealed class Tower
         _random = random ?? throw new ArgumentNullException(nameof(random));
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(range);
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(power);
-        if (accuracy is < 0 or > 1)
+        if (!double.IsFinite(accuracy) || accuracy is < 0 or > 1)
         {
             throw new ArgumentOutOfRangeException(nameof(accuracy), "Accuracy must be between 0 and 1.");
         }
