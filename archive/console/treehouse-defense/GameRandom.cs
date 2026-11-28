@@ -14,7 +14,7 @@ public sealed class GameRandom
 
     public bool Chance(double probability)
     {
-        if (probability is < 0 or > 1)
+        if (!double.IsFinite(probability) || probability is < 0 or > 1)
         {
             throw new ArgumentOutOfRangeException(nameof(probability), "Probability must be between 0 and 1.");
         }
