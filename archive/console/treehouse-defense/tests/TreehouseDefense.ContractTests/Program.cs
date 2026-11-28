@@ -189,8 +189,8 @@ static void RejectsNonFiniteProbabilities()
             new MapLocation(0, 0, new Map(1, 1)), random, accuracy: probability));
     }
 
-    AssertTrue(random.Chance(0));
-    AssertFalse(random.Chance(1));
+    AssertFalse(random.Chance(0));
+    AssertTrue(random.Chance(1));
 }
 
 static Path BuildPath(int length)
